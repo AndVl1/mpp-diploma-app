@@ -10,6 +10,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "mpp-app"
 include(":apps:androidApp")
+include(":apps:desktopApp")
 
 include(":common:core")
 
