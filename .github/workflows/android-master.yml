@@ -12,6 +12,8 @@ jobs:
   build:
     name: "Build apk"
     runs-on: ubuntu-latest
+    outputs:
+      build_number: ${{ steps.buildnumber.outputs.build_number }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -21,21 +23,44 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+      - name: Generate build number
+        id: buildnumber
+        uses: onyxmueller/build-tag-number@v1
+        with:
+          token: ${{secrets.github_token}}
 
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: 'Set variables'
         id: vars
         run: |
           export $(cat .github/workflows/version.env | xargs)
-          echo 1 > version.txt
+          echo "::set-output name=major_version::${MAJOR_VERSION}"
+          echo ${{ steps.buildnumber.outputs.build_number }} > version.txt
+      #      - name: Create local.properties
+      #        run: |
+      #          touch local.properties
+      #          echo IMGBB_API_KEY=\"$IMGBB_API_KEY\" > ./local.properties
+      #          echo POSITIONSTACK_API_KEY=\"$POSITIONSTACK_API_KEY\" > ./local.properties
+      #      - name: Create google-services
+      #        run: |
+      #          touch /home/runner/work/ULife/ULife/app/google-services.json
+      #          echo $GOOGLE_SERVICES_JSON > /home/runner/work/ULife/ULife/app/google-services.json
       - name: Build production release
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           ./gradlew :apps:androidApp:assembleRelease \
-            -Dversion_code=1 \
+            -Dversion_code=${{ steps.buildnumber.outputs.build_number }} \
             -Dversion_name="${{ steps.vars.outputs.major_version }}" \
       - name: Sign release APK
         id: sign_apk_release
