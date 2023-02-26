@@ -6,7 +6,9 @@ plugins {
 kotlin {
     sourceSets {
         commonMain {
-            dependencies {  }
+            dependencies {
+                implementation(projects.common.core)
+            }
         }
 
         androidMain {
