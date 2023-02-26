@@ -3,7 +3,8 @@ name: Build Pull request
 on:
   pull_request:
     branches:
-      - 'dev', 'master'
+      - 'dev'
+      - 'master'
 
 env:
   GITHUB_REF: github.ref
