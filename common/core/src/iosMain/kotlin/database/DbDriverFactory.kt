@@ -1,9 +1,9 @@
 package database
 
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import PlatformConfiguration
-import com.squareup.sqldelight.db.SqlDriver
-import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 
 actual class DbDriverFactory actual constructor(platformConfiguration: PlatformConfiguration){
-    actual fun createDriver(schema: SqlDriver.Schema, name: String): SqlDriver = NativeSqliteDriver(schema, name)
+    actual fun createDriver(name: String): SqlDriver = NativeSqliteDriver(Database.Schema, name)
 }

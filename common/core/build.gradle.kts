@@ -1,7 +1,7 @@
 plugins {
-    id("multiplatform-setup")
-    id("android-setup")
+    id("common-core-setup")
     kotlin("plugin.serialization")
+    id("app.cash.sqldelight")
 }
 
 kotlin {
@@ -39,6 +39,16 @@ kotlin {
                 implementation(Dependencies.Ktor.okhttp)
                 implementation(Dependencies.SqlDelight.desktop)
             }
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("")
+            schemaOutputDirectory.set(file("src/commonMain/sqldelight/data/schema"))
+            migrationOutputDirectory.set(file("src/commonMain/sqldelight/data/migrations"))
         }
     }
 }
