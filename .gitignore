@@ -15,3 +15,4 @@ apps/iosApp/Pods/*
 apps/iosApp/iosApp.xcworkspace/*
 apps/iosApp/iosApp.xcodeproj/*
 !apps/iosApp/iosApp.xcodeproj/project.pbxproj
+common/umbrella-ios/umbrella_ios.podspec
