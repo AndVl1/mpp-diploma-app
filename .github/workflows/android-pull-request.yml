@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir artifacts
           cp version.txt artifacts/version.txt
-          cp app/build/outputs/apk/debug/app-debug.apk artifacts/app-debug-`cat version.txt`.apk
+          cp apps/androidApp/build/outputs/apk/debug/app-debug.apk artifacts/app-debug-`cat version.txt`.apk
           echo "::set-output name=path::artifacts/"
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
