@@ -46,14 +46,14 @@ jobs:
           export $(cat .github/workflows/version.env | xargs)
           echo "::set-output name=major_version::${MAJOR_VERSION}"
           echo ${{ steps.buildnumber.outputs.build_number }} > version.txt
-      - name: Build production release
+      - name: Build dev debug release
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           ./gradlew :apps:androidApp:assembleRelease \
             -Dversion_code=${{ steps.buildnumber.outputs.build_number }} \
             -Dversion_name="${{ steps.vars.outputs.major_version }}" \
-      - name: Sign release APK
+      - name: Sign dev APK
         id: sign_apk_release
         uses: r0adkll/sign-android-release@v1
         with:
