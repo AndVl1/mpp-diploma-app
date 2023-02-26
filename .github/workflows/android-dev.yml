@@ -1,10 +1,9 @@
-name: Build Pull request
+name: Build master branch
 
 on:
-  pull_request:
+  push:
     branches:
       - 'dev'
-      - 'master'
 
 env:
   GITHUB_REF: github.ref
@@ -47,17 +46,28 @@ jobs:
           export $(cat .github/workflows/version.env | xargs)
           echo "::set-output name=major_version::${MAJOR_VERSION}"
           echo ${{ steps.buildnumber.outputs.build_number }} > version.txt
-      - name: Build dev
+      - name: Build production release
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
-          ./gradlew generateCommonMainDatabaseInterface :apps:androidApp:assembleDebug \
+          ./gradlew :apps:androidApp:assembleRelease \
             -Dversion_code=${{ steps.buildnumber.outputs.build_number }} \
             -Dversion_name="${{ steps.vars.outputs.major_version }}" \
+      - name: Sign release APK
+        id: sign_apk_release
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: apps/androidApp/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_ALIAS_PASSWORD }}
       - name: Copy artifacts
         id: artifacts_copy
         run: |
           mkdir artifacts
           cp version.txt artifacts/version.txt
-          cp apps/androidApp/build/outputs/apk/debug/androidApp-debug.apk artifacts/app-debug-`cat version.txt`.apk
+          cp ${{ steps.sign_apk_release.outputs.signedReleaseFile }} artifacts/app-release-`cat version.txt`.apk
           echo "::set-output name=path::artifacts/"
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
@@ -84,7 +94,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            New commit in pull request #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}
-            View: https://github.com/AndVl1/mpp-diploma-app/pull/${{ github.event.pull_request.number }}
-          document: ${{steps.download.outputs.download-path}}/app-debug-${{steps.version-num.outputs.num}}.apk
+            New version in dev branch
+            Commit name: ${{ github.event.commits[0].message }}
+          document: ${{steps.download.outputs.download-path}}/app-release-${{steps.version-num.outputs.num}}.apk
           disable_notification: true
