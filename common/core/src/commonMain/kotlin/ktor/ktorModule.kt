@@ -2,6 +2,9 @@ package ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BearerTokens
+import io.ktor.client.plugins.auth.providers.bearer
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -35,9 +38,18 @@ internal val ktorModule = DI.Module("ktorModule") {
                 requestTimeoutMillis = 30000
             }
 
+            install(Auth) {
+                bearer {
+                    loadTokens {
+                        BearerTokens("", "")
+                    }
+                }
+            }
+
             defaultRequest {
-                url("")
-                header("Content-Type", "application/json; charset=UTF-8")
+                url("http://api.nmbook.ru/")
+                header("accept", "application/json; charset=UTF-8")
+                header("Content-Type", "application/x-www-form-urlencoded")
             }
         }
     }

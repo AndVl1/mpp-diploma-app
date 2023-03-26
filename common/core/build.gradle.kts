@@ -17,6 +17,10 @@ kotlin {
                 implementation(Dependencies.Ktor.serialization)
                 implementation(Dependencies.Ktor.negotation)
                 implementation(Dependencies.Ktor.logging)
+                implementation(Dependencies.Ktor.auth)
+
+                implementation(Dependencies.Settings.core)
+                implementation(Dependencies.Settings.noargs)
 
                 api(Dependencies.Kodein.core)
             }

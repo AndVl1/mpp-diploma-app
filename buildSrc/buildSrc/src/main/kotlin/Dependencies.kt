@@ -16,6 +16,7 @@ object Dependencies {
 
     object Android {
         const val gradlePlugin = "com.android.tools.build:gradle:7.4.1"
+        const val composeActivity = "androidx.activity:activity-compose:1.5.1"
 
         object Compose {
             private const val version = "1.2.0"
@@ -47,6 +48,7 @@ object Dependencies {
         const val logging = "io.ktor:ktor-client-logging:$version"
         const val android = "io.ktor:ktor-client-android:$version"
         const val okhttp = "io.ktor:ktor-client-okhttp:$version"
+        const val auth = "io.ktor:ktor-client-auth:$version"
     }
 
     object SqlDelight {
@@ -57,5 +59,27 @@ object Dependencies {
         const val android = "app.cash.sqldelight:android-driver:$version"
         const val desktop = "app.cash.sqldelight:sqlite-driver:$version"
         const val ios = "app.cash.sqldelight:native-driver:$version"
+    }
+
+    object Settings {
+        private const val version = "1.0.0"
+
+        const val core = "com.russhwolf:multiplatform-settings:$version"
+        const val noargs = "com.russhwolf:multiplatform-settings-no-arg:$version"
+    }
+
+    object KViewModel {
+        private const val version = "0.14"
+
+        const val core = "com.adeo:kviewmodel:$version"
+        const val compose = "com.adeo:kviewmodel-compose:$version"
+        const val odyssey = "com.adeo:kviewmodel-odyssey:$version"
+    }
+
+    object Odyssey {
+        private const val version = "1.3.400-native-experimental"
+
+        const val core = "io.github.alexgladkov:odyssey-core:$version"
+        const val compose = "io.github.alexgladkov:odyssey-compose:$version"
     }
 }
