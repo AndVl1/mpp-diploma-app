@@ -38,14 +38,6 @@ internal val ktorModule = DI.Module("ktorModule") {
                 requestTimeoutMillis = 30000
             }
 
-            install(Auth) {
-                bearer {
-                    loadTokens {
-                        BearerTokens("", "")
-                    }
-                }
-            }
-
             defaultRequest {
                 url("http://api.nmbook.ru/")
                 header("accept", "application/json; charset=UTF-8")

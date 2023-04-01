@@ -24,6 +24,10 @@ class AuthRepositoryImpl(
     }
 
     override fun isUserLoggedIn(): Boolean {
-        return settings.getToken().isNotBlank()
+        return getToken().isNotBlank()
+    }
+
+    override fun getToken(): String {
+        return settings.getToken()
     }
 }

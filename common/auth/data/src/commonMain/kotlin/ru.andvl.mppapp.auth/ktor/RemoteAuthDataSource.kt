@@ -40,9 +40,9 @@ class RemoteAuthDataSource(
 
     suspend fun checkWhoAmI(token: String): WhoAmIDto {
         val req = httpClient.get {
+            bearerAuth(token)
             url {
                 path("/whoami")
-                bearerAuth(token)
             }
         }
         if (req.status.isSuccess()) {

@@ -12,7 +12,9 @@ kotlin {
                 implementation(projects.common.coreCompose)
 
                 implementation(projects.common.auth.data)
-                implementation(projects.common.auth.compose)
+//                implementation(projects.common.auth.compose)
+
+                implementation(projects.common.main.compose)
 
                 implementation(projects.common.list.data)
                 implementation(projects.common.list.compose)

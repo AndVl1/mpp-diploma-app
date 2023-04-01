@@ -18,32 +18,42 @@ import ru.andvl.mppapp.theme.AppTheme
 import ru.andvl.mppapp.theme.Theme
 
 fun ComponentActivity.setupThemedNavigation() {
-    val rootController = RootComposeBuilder().apply { generateGraph() }.build()
-    rootController.setupWithActivity(this)
-    rootController.setupWithViewModels()
 
     setContent {
-        MainContent(rootController = rootController)
+        AppTheme {
+            val backgroundColor = Theme.colors.primaryBackground
+            val selectedColor = Theme.colors.primaryAction
+            val unselectedColor = Theme.colors.hintTextColor
+            val rootController = RootComposeBuilder().apply {
+                generateGraph(
+                    backgroundColor,
+                    selectedColor,
+                    unselectedColor,
+                )
+            }.build()
+            rootController.setupWithActivity(this)
+            rootController.setupWithViewModels()
+            MainContent(rootController = rootController)
+        }
     }
 }
 
 @Composable
 private fun MainContent(rootController: RootController) {
-    AppTheme {
-        val backgroundColor = Theme.colors.primaryBackground
-        rootController.backgroundColor = backgroundColor
 
-        CompositionLocalProvider(
-            LocalRootController provides rootController
+    val backgroundColor = Theme.colors.primaryBackground
+    rootController.backgroundColor = backgroundColor
+
+    CompositionLocalProvider(
+        LocalRootController provides rootController
+    ) {
+        ModalNavigator(
+            configuration = DefaultModalConfiguration(
+                backgroundColor,
+                DisplayType.FullScreen
+            )
         ) {
-            ModalNavigator(
-                configuration = DefaultModalConfiguration(
-                    backgroundColor,
-                    DisplayType.FullScreen
-                )
-            ) {
-                Navigator(startScreen = NavTree.Splash.SplashScreen.name)
-            }
+            Navigator(startScreen = NavTree.Splash.SplashScreen.name)
         }
     }
 }

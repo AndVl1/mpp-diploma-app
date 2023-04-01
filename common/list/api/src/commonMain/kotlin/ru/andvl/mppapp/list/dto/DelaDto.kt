@@ -8,7 +8,7 @@ data class DelaDto(
     @SerialName("has_next")
     val hasNext: Boolean? = null,
     @SerialName("items")
-    val items: List<ItemDto?>? = null,
+    val items: List<ItemDto>? = null,
     @SerialName("items_count")
     val itemsCount: Int? = null,
     @SerialName("skip")

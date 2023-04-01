@@ -7,8 +7,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(projects.common.list.api)
-                implementation(projects.common.list.presentation)
+                implementation(projects.common.main.presentation)
+                implementation(projects.common.list.compose)
                 implementation(projects.common.coreCompose)
                 implementation(projects.common.coreUtils)
 

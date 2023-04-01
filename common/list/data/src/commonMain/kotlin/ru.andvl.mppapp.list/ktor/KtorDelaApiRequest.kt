@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class KtorDelaApiRequest(
     @SerialName("fio_filter")
-    val fioFilter: Boolean = true,
+    val fioFilter: String = "",
     @SerialName("filter")
     val filter: String = "",
     @SerialName("skip")
@@ -17,6 +17,6 @@ data class KtorDelaApiRequest(
     val sort: String = "",
     @SerialName("calc_total_count")
     val calcTotalCount: Boolean = true,
-    @SerialName("end")
+    @SerialName("eng")
     val eng: Boolean = true,
 )

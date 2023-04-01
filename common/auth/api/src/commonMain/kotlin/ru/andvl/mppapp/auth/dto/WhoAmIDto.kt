@@ -11,5 +11,5 @@ data class WhoAmIDto(
     @SerialName("roles")
     val roles: List<String>,
     @SerialName("username")
-    val username: String
+    val username: String,
 )

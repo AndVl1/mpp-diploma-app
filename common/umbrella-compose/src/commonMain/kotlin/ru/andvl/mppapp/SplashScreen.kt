@@ -9,5 +9,5 @@ import ru.andvl.mppapp.navigation.NavTree
 fun SplashScreen() {
     val rootController = LocalRootController.current
 
-    rootController.present(NavTree.Auth.AuthFlow.name)
+    rootController.present(NavTree.Main.Dashboard.name)
 }

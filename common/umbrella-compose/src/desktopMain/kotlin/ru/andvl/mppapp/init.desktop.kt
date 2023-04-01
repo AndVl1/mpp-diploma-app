@@ -10,17 +10,23 @@ import ru.andvl.mppapp.theme.AppTheme
 import ru.andvl.mppapp.theme.Theme
 
 @Composable
-fun FrameWindowScope.setupThemedNavigation() {
+fun setupThemedNavigation() {
     PlatformSdk.init(PlatformConfiguration())
 
     AppTheme {
         val backgroundColor = Theme.colors.primaryBackground
+        val selectedColor = Theme.colors.primaryAction
+        val unselectedColor = Theme.colors.hintTextColor
         val odysseyConfiguration = OdysseyConfiguration(
             backgroundColor = backgroundColor
         )
 
         setNavigationContent(odysseyConfiguration) {
-            generateGraph()
+            generateGraph(
+                backgroundColor,
+                selectedColor,
+                unselectedColor,
+            )
         }
     }
 }
