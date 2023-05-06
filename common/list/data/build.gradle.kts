@@ -8,6 +8,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                implementation(libs.kotlin.serialization.core)
+
                 implementation(projects.common.auth.api)
                 implementation(projects.common.list.api)
                 implementation(projects.common.core)

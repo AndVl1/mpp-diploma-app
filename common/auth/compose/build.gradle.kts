@@ -11,12 +11,12 @@ kotlin {
                 implementation(projects.common.coreCompose)
                 implementation(projects.common.coreUtils)
 
-                implementation(Dependencies.KViewModel.core)
-                implementation(Dependencies.KViewModel.compose)
-                implementation(Dependencies.KViewModel.odyssey)
+                implementation(libs.kViewModel.core)
+                implementation(libs.kViewModel.compose)
+                implementation(libs.kViewModel.odyssey)
 
-                implementation(Dependencies.Odyssey.core)
-                implementation(Dependencies.Odyssey.compose)
+                implementation(libs.odyssey.core)
+                implementation(libs.odyssey.compose)
             }
         }
     }

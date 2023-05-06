@@ -11,8 +11,9 @@ kotlin {
                 implementation(projects.common.auth.api)
                 implementation(projects.common.core)
 
-                implementation(Dependencies.Kodein.core)
-                implementation(Dependencies.Settings.core)
+                implementation(libs.kotlin.serialization.core)
+                implementation(libs.kodein.core)
+                implementation(libs.settings.core)
             }
         }
     }

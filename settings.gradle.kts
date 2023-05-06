@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google()
         gradlePluginPortal()
@@ -6,11 +8,15 @@ pluginManagement {
     }
 }
 
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "mpp-app"
-include(":apps:androidApp")
-include(":apps:desktopApp")
+include(":androidApp")
+project(":androidApp").projectDir = File(rootDir, "apps/androidApp")
+
+include(":desktopApp")
+project(":desktopApp").projectDir = File(rootDir, "apps/desktopApp")
 
 include(":common:core")
 include(":common:core-compose")

@@ -1,5 +1,4 @@
-import org.gradle.api.artifacts.dsl.Dependencies
-import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.kotlin
 
 plugins {
     id("multiplatform-setup")

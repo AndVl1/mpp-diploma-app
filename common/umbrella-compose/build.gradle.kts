@@ -12,7 +12,6 @@ kotlin {
                 implementation(projects.common.coreCompose)
 
                 implementation(projects.common.auth.data)
-//                implementation(projects.common.auth.compose)
 
                 implementation(projects.common.main.compose)
 
@@ -21,18 +20,18 @@ kotlin {
 
                 implementation(projects.common.umbrellaCore)
 
-                implementation(Dependencies.KViewModel.core)
-                implementation(Dependencies.KViewModel.compose)
-                implementation(Dependencies.KViewModel.odyssey)
+                implementation(libs.kViewModel.core)
+                implementation(libs.kViewModel.compose)
+                implementation(libs.kViewModel.odyssey)
 
-                implementation(Dependencies.Odyssey.compose)
-                implementation(Dependencies.Odyssey.core)
+                implementation(libs.odyssey.core)
+                implementation(libs.odyssey.compose)
             }
         }
 
         androidMain {
             dependencies {
-                implementation(Dependencies.Android.composeActivity)
+                implementation(libs.compose.activity)
             }
         }
     }

@@ -11,7 +11,7 @@ kotlin {
                 implementation(projects.common.list.api)
                 implementation(projects.common.core)
 
-                implementation(Dependencies.KViewModel.core)
+                implementation(libs.kViewModel.core)
             }
         }
     }

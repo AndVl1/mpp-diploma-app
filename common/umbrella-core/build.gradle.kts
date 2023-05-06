@@ -7,12 +7,12 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(project(":common:core"))
+                implementation(projects.common.core)
 
-                implementation(project(":common:auth:data"))
-                implementation(project(":common:list:data"))
+                implementation(projects.common.auth.data)
+                implementation(projects.common.list.data)
 
-                implementation(Dependencies.Kodein.core)
+                implementation(libs.kodein.core)
             }
         }
     }
