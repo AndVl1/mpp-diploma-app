@@ -6,6 +6,10 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
+
+    plugins {
+        id("app.cash.sqldelight").version("2.0.0-alpha05")
+    }
 }
 
 

@@ -15,9 +15,11 @@ kotlin {
 
         framework {
             transitiveExport = false
+//            isStatic = false
             baseName = "SharedSDK"
             freeCompilerArgs += "-Xbinary=bundleId=ru.andvl.mppapp"
             export(projects.common.core)
+            export(projects.common.umbrellaCore)
         }
     }
 
@@ -25,15 +27,21 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(projects.common.core)
-//                implementation(project(":common:umbrella-core"))
+                implementation(projects.common.umbrellaCore)
             }
         }
 
         iosMain {
             dependencies {
                 api(projects.common.core)
-//                api(project(":common:umbrella-core"))
+                api(projects.common.umbrellaCore)
             }
         }
+    }
+}
+
+android {
+    buildFeatures {
+        compose = false
     }
 }

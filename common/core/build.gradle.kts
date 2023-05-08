@@ -53,6 +53,7 @@ sqldelight {
             packageName.set("")
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/data/schema"))
             migrationOutputDirectory.set(file("src/commonMain/sqldelight/data/migrations"))
+            linkSqlite.set(true)
         }
     }
 }
