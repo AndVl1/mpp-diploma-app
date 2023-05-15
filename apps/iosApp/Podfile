@@ -1,5 +1,6 @@
+# workspace 'iosApp'
 target 'iosApp' do
   use_frameworks!
   platform :ios, '14.1'
-  pod 'umbrella_ios', :path => '../../common/umbrella-ios'
+  pod 'umbrella_compose', :path => '../../common/umbrella-compose'
 end

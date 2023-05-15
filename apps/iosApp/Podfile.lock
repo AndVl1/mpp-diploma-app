@@ -1,16 +1,16 @@
 PODS:
-  - shared (1.0)
+  - umbrella_compose (0.0.1)
 
 DEPENDENCIES:
-  - umbrella_ios (from `../../common/umbrella-ios`)
+  - umbrella_compose (from `../../common/umbrella-compose`)
 
 EXTERNAL SOURCES:
-  shared:
-    :path: "../../common/umbrella-ios"
+  umbrella_compose:
+    :path: "../../common/umbrella-compose"
 
 SPEC CHECKSUMS:
-  umbrella-ios: 2d3b24a8fe27b7d9e65b8d075a9672fbc6a1aa10
+  umbrella_compose: f6436e7e75d7348470274de772d1298954d53890
 
-PODFILE CHECKSUM: f282da88f39e69507b0a255187c8a6b644477756
+PODFILE CHECKSUM: 5881c0ec80e2c49fef85c71e55f32f1b81b09e61
 
 COCOAPODS: 1.11.3
