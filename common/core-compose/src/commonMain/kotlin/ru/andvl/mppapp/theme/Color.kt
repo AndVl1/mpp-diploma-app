@@ -15,7 +15,7 @@ data class MppAppColors(
     val tagTextColor: Color
 )
 
-val palette = MppAppColors(
+internal val palette = MppAppColors(
     primaryBackground = Color(0xFF050B18),
     primaryAction = Color(0xFFF4D144),
     primaryTextColor = Color(0xFF050B18),
@@ -27,4 +27,4 @@ val palette = MppAppColors(
     tagTextColor = Color(0xFF44A9F4)
 )
 
-val LocalColorProvider = staticCompositionLocalOf<MppAppColors> { error("No default implementation") }
+internal val LocalColorProvider = staticCompositionLocalOf<MppAppColors> { error("No default implementation") }

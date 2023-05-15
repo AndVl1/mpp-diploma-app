@@ -1,9 +1,34 @@
 plugins {
     id("mp-compose-setup")
     id("android-setup")
+    kotlin("native.cocoapods")
 }
 
+version = "0.0.1"
+
 kotlin {
+    cocoapods {
+        summary = "MPP iOS SDK + Compose"
+        homepage = "https://google.com"
+        ios.deploymentTarget = "14.0"
+        podfile = project.file("../../apps/iosApp/Podfile")
+
+        framework {
+            transitiveExport = false
+            isStatic = true
+            baseName = "shared_compose"
+            freeCompilerArgs += "-Xbinary=bundleId=ru.andvl.mppapp"
+            export(projects.common.core)
+            export(projects.common.coreUtils)
+            export(projects.common.coreCompose)
+            export(projects.common.auth.data)
+            export(projects.common.main.compose)
+            export(projects.common.list.data)
+            export(projects.common.list.compose)
+            export(projects.common.umbrellaCore)
+        }
+    }
+
     sourceSets {
         commonMain {
             dependencies {
@@ -31,7 +56,21 @@ kotlin {
 
         androidMain {
             dependencies {
+                implementation(project.dependencies.platform(libs.androidx.compose.bom))
                 implementation(libs.compose.activity)
+            }
+        }
+
+        iosMain {
+            dependencies {
+                api(projects.common.core)
+                api(projects.common.coreUtils)
+                api(projects.common.coreCompose)
+                api(projects.common.auth.data)
+                api(projects.common.main.compose)
+                api(projects.common.list.data)
+                api(projects.common.list.compose)
+                api(projects.common.umbrellaCore)
             }
         }
     }

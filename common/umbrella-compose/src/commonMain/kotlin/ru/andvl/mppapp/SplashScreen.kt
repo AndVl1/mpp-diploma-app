@@ -6,7 +6,7 @@ import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import ru.andvl.mppapp.navigation.NavTree
 
 @Composable
-fun SplashScreen() {
+internal fun SplashScreen() {
     val rootController = LocalRootController.current
 
     rootController.present(NavTree.Main.Dashboard.name)

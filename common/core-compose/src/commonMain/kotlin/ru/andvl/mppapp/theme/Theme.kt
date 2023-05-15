@@ -12,7 +12,7 @@ fun AppTheme(content: @Composable () -> Unit) {
 }
 
 object Theme {
-    val colors: MppAppColors
+    internal val colors: MppAppColors
         @Composable
         get() = LocalColorProvider.current
 }

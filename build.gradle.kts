@@ -6,20 +6,17 @@ plugins {
     alias(libs.plugins.android.lib) apply false
     alias(libs.plugins.compose) apply false
 }
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath(libs.kotlin.gradle)
-        classpath(libs.android.gradle)
-    }
+
+repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
 }
 allprojects {
     repositories {
+        gradlePluginPortal()
         google()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         mavenCentral()
     }
 }

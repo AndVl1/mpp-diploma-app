@@ -3,19 +3,15 @@ kotlin-general = "1.8.20"
 coroutines = "1.6.4"
 androidGradle = "7.4.1"
 composeActivity = "1.5.1"
-compose = "1.4.0"
-composeRuntime = "1.3.3"
-composeUi = "1.3.3"
-composeMaterial = "1.3.1"
-composeTooling = "1.3.3"
-composeIcons = "1.3.1"
-composeGradlePlugin = "1.3.0"
+compose = "1.4.0-rc03"
+androidxComposeBom = "2023.03.00"
+composeMpGradle = "1.4.0"
 kodein = "7.18.0"
 ktor = "2.2.3"
 sqlDelight = "2.0.0-alpha05"
 settings = "1.0.0"
 kViewModel = "0.14"
-odyssey = "1.3.400-native-experimental"
+odyssey = "1.4.0-alpha05"
 
 [libraries]
 kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-general" }
@@ -25,13 +21,14 @@ kotlin-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-s
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
 
-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "composeRuntime" }
-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "composeUi" }
-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "composeMaterial" }
-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeTooling" }
-compose-icons = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "composeIcons" }
-compose-gradle = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeGradlePlugin" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+compose-activity = { group = "androidx.activity", name = "activity-compose" }
+compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-material = { group = "androidx.compose.material", name = "material" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-icons = { group = "androidx.compose.material", name = "material-icons-core" }
+compose-gradle = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMpGradle" }
 
 kodein-core = { group = "org.kodein.di", name = "kodein-di", version.ref = "kodein" }
 

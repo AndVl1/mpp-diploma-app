@@ -15,7 +15,7 @@ kotlin {
 
         framework {
             transitiveExport = false
-//            isStatic = false
+            isStatic = true
             baseName = "SharedSDK"
             freeCompilerArgs += "-Xbinary=bundleId=ru.andvl.mppapp"
             export(projects.common.core)

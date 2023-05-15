@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -16,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import ru.andvl.mppapp.auth.models.LoginEvent
 import ru.andvl.mppapp.auth.models.LoginViewState
 import ru.andvl.mppapp.components.AppTextField
-import ru.andvl.mppapp.theme.Theme
 
 @Composable
 fun LoginView(
@@ -32,13 +32,13 @@ fun LoginView(
             value = state.login,
             onValueChange = { eventHandler.invoke(LoginEvent.LoginChanged(it)) },
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("Your login", color = Theme.colors.hintTextColor) }
+            placeholder = { Text("Your login", color = MaterialTheme.colors.primaryVariant) }
         )
         AppTextField(
             value = state.password,
             onValueChange = { eventHandler.invoke(LoginEvent.PasswordChanged(it)) },
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("Your password", color = Theme.colors.hintTextColor) }
+            placeholder = { Text("Your password", color = MaterialTheme.colors.primaryVariant) }
         )
         Button(onClick = { eventHandler.invoke(LoginEvent.LoginClicked) }) {
             Text("Login")

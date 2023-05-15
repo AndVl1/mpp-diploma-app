@@ -2,13 +2,10 @@ pluginManagement {
     includeBuild("build-logic")
 
     repositories {
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
         gradlePluginPortal()
         mavenCentral()
-    }
-
-    plugins {
-        id("app.cash.sqldelight").version("2.0.0-alpha05")
     }
 }
 
@@ -46,4 +43,4 @@ include(":common:auth:data")
 
 include(":common:umbrella-core")
 include(":common:umbrella-compose")
-include(":common:umbrella-ios")
+//include(":common:umbrella-ios")
