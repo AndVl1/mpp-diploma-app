@@ -8,36 +8,40 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(Dependencies.Kotlin.Serialization.serialization)
-                api(Dependencies.Kotlin.Coroutines.core)
-                api(Dependencies.SqlDelight.core)
+                api(libs.kotlin.serialization)
+                api(libs.coroutines.core)
+                api(libs.sqlDelight.core)
 
-                api(Dependencies.Ktor.core)
-                implementation(Dependencies.Ktor.json)
-                implementation(Dependencies.Ktor.serialization)
-                implementation(Dependencies.Ktor.negotation)
-                implementation(Dependencies.Ktor.logging)
+                api(libs.ktor.core)
+                implementation(libs.ktor.json)
+                implementation(libs.ktor.serialization)
+                implementation(libs.ktor.negotation)
+                implementation(libs.ktor.logging)
+                implementation(libs.ktor.auth)
 
-                api(Dependencies.Kodein.core)
+                implementation(libs.settings.core)
+                implementation(libs.settings.noargs)
+
+                api(libs.kodein.core)
             }
         }
         androidMain {
             dependencies {
-                implementation(Dependencies.Ktor.android)
-                implementation(Dependencies.Ktor.okhttp)
-                implementation(Dependencies.SqlDelight.android)
+                implementation(libs.ktor.android)
+                implementation(libs.ktor.okhttp)
+                implementation(libs.sqlDelight.android)
             }
         }
         iosMain {
             dependencies {
-                implementation(Dependencies.Ktor.ios)
-                implementation(Dependencies.SqlDelight.ios)
+                implementation(libs.ktor.ios)
+                implementation(libs.sqlDelight.ios)
             }
         }
         desktopMain {
             dependencies {
-                implementation(Dependencies.Ktor.okhttp)
-                implementation(Dependencies.SqlDelight.desktop)
+                implementation(libs.ktor.okhttp)
+                implementation(libs.sqlDelight.desktop)
             }
         }
     }
@@ -49,6 +53,7 @@ sqldelight {
             packageName.set("")
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/data/schema"))
             migrationOutputDirectory.set(file("src/commonMain/sqldelight/data/migrations"))
+            linkSqlite.set(true)
         }
     }
 }

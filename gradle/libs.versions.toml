@@ -1,0 +1,68 @@
+[versions]
+kotlin-general = "1.8.20"
+coroutines = "1.6.4"
+androidGradle = "7.4.1"
+composeActivity = "1.5.1"
+compose = "1.4.0-rc03"
+androidxComposeBom = "2023.03.00"
+composeMpGradle = "1.4.0"
+kodein = "7.18.0"
+ktor = "2.2.3"
+sqlDelight = "2.0.0-alpha05"
+settings = "1.0.0"
+kViewModel = "0.14"
+odyssey = "1.4.0-alpha05"
+
+[libraries]
+kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-general" }
+kotlin-serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin-general" }
+kotlin-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version = "1.4.1" }
+
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+compose-activity = { group = "androidx.activity", name = "activity-compose" }
+compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-material = { group = "androidx.compose.material", name = "material" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-icons = { group = "androidx.compose.material", name = "material-icons-core" }
+compose-gradle = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMpGradle" }
+
+kodein-core = { group = "org.kodein.di", name = "kodein-di", version.ref = "kodein" }
+
+ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-json = { group = "io.ktor", name = "ktor-client-json", version.ref = "ktor" }
+ktor-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
+ktor-serialization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-negotation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+ktor-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-auth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor" }
+
+sqlDelight-gradle = { group = "app.cash.sqldelight", name = "gradle-plugin", version.ref = "sqlDelight" }
+sqlDelight-core = { group = "app.cash.sqldelight", name = "runtime", version.ref = "sqlDelight" }
+sqlDelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
+sqlDelight-desktop = { group = "app.cash.sqldelight", name = "sqlite-driver", version.ref = "sqlDelight" }
+sqlDelight-ios = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqlDelight" }
+
+settings-core = { group = "com.russhwolf", name = "multiplatform-settings", version.ref = "settings" }
+settings-noargs = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version.ref = "settings" }
+
+kViewModel-core = { group = "com.adeo", name = "kviewmodel", version.ref = "kViewModel" }
+kViewModel-compose = { group = "com.adeo", name = "kviewmodel-compose", version.ref = "kViewModel" }
+kViewModel-odyssey = { group = "com.adeo", name = "kviewmodel-odyssey", version.ref = "kViewModel" }
+
+odyssey-core = { group = "io.github.alexgladkov", name = "odyssey-core", version.ref = "odyssey" }
+odyssey-compose = { group = "io.github.alexgladkov", name = "odyssey-compose", version.ref = "odyssey" }
+
+[plugins]
+android-app = { id = "com.android.application", version.ref = "androidGradle" }
+android-lib = { id = "com.android.library", version.ref = "androidGradle" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-general" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-general" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
