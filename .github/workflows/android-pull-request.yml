@@ -49,7 +49,7 @@ jobs:
           echo ${{ steps.buildnumber.outputs.build_number }} > version.txt
       - name: Build dev
         run: |
-          ./gradlew generateCommonMainDatabaseInterface :apps:androidApp:assembleDebug \
+          ./gradlew generateCommonMainDatabaseInterface :androidApp:assembleDebug \
             -Dversion_code=${{ steps.buildnumber.outputs.build_number }} \
             -Dversion_name="${{ steps.vars.outputs.major_version }}" \
       - name: Copy artifacts

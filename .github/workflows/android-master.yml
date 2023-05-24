@@ -59,7 +59,7 @@ jobs:
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
-          ./gradlew :apps:androidApp:assembleRelease \
+          ./gradlew :androidApp:assembleRelease \
             -Dversion_code=${{ steps.buildnumber.outputs.build_number }} \
             -Dversion_name="${{ steps.vars.outputs.major_version }}" \
       - name: Sign release APK
