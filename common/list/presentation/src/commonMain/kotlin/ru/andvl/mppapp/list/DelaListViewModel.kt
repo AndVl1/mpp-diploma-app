@@ -3,7 +3,9 @@ package ru.andvl.mppapp.list
 import com.adeo.kviewmodel.BaseSharedViewModel
 import com.adeo.kviewmodel.KViewModel
 import di.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.andvl.mppapp.auth.repository.AuthRepository
 import ru.andvl.mppapp.list.models.DelaAction
 import ru.andvl.mppapp.list.models.DelaEvent
@@ -26,13 +28,18 @@ class DelaListViewModel : BaseSharedViewModel<DelaViewState, DelaAction, DelaEve
 
     override fun obtainEvent(viewEvent: DelaEvent) {
         when (viewEvent) {
-            DelaEvent.Refresh -> {
+            is DelaEvent.Refresh -> {
                 viewState = viewState.copy(isLoading = true, dela = null, isError = false)
                 viewModelScope.launch {
                     getDela()
                 }
             }
-            DelaEvent.DeloClick -> {}
+            is DelaEvent.DeloClick -> {
+                viewAction = DelaAction.OpenDetails(viewEvent.id)
+            }
+            is DelaEvent.DeloOpen -> {
+                viewAction = null
+            }
         }
     }
 
@@ -51,7 +58,7 @@ class DelaListViewModel : BaseSharedViewModel<DelaViewState, DelaAction, DelaEve
     private suspend fun getDela() {
         val dela = delaRepository.getDelas(token = authRepository.getToken())
         viewState = if (dela != null) {
-            viewState.copy(isLoading = true, dela = dela)
+            viewState.copy(isLoading = false, dela = dela)
         } else {
             viewState.copy(isLoading = false, isError = true)
         }

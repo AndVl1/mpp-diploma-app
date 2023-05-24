@@ -4,6 +4,7 @@ import org.kodein.di.bind
 import org.kodein.di.direct
 import org.kodein.di.singleton
 import ru.andvl.mppapp.auth.authModule
+import ru.andvl.mppapp.details.detailsModule
 import ru.andvl.mppapp.list.delaModule
 
 object PlatformSdk {
@@ -21,6 +22,7 @@ object PlatformSdk {
                     coreModule,
                     delaModule,
                     authModule,
+                    detailsModule,
                 )
             }.direct
         )

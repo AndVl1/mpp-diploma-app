@@ -12,4 +12,8 @@ object NavTree {
     enum class Main {
         Dashboard, List
     }
+
+    enum class Details {
+        Details
+    }
 }

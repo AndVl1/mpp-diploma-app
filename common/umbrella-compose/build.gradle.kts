@@ -25,6 +25,8 @@ kotlin {
             export(projects.common.main.compose)
             export(projects.common.list.data)
             export(projects.common.list.compose)
+            export(projects.common.details.data)
+            export(projects.common.details.compose)
             export(projects.common.umbrellaCore)
         }
     }
@@ -42,6 +44,9 @@ kotlin {
 
                 implementation(projects.common.list.data)
                 implementation(projects.common.list.compose)
+
+                implementation(projects.common.details.data)
+                implementation(projects.common.details.compose)
 
                 implementation(projects.common.umbrellaCore)
 
@@ -70,6 +75,8 @@ kotlin {
                 api(projects.common.main.compose)
                 api(projects.common.list.data)
                 api(projects.common.list.compose)
+                api(projects.common.details.data)
+                api(projects.common.details.compose)
                 api(projects.common.umbrellaCore)
             }
         }

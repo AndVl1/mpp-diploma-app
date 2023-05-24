@@ -7,13 +7,11 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                implementation(projects.common.auth.api)
+                implementation(projects.common.details.api)
                 implementation(projects.common.core)
 
-                implementation(projects.common.auth.data)
-                implementation(projects.common.list.data)
-                implementation(projects.common.details.data)
-
-                implementation(libs.kodein.core)
+                implementation(libs.kViewModel.core)
             }
         }
     }
