@@ -6,6 +6,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import com.adeo.kviewmodel.odyssey.setupWithViewModels
+import com.seiko.imageloader.LocalImageLoader
 import ru.alexgladkov.odyssey.compose.RootController
 import ru.alexgladkov.odyssey.compose.base.Navigator
 import ru.alexgladkov.odyssey.compose.extensions.setupWithActivity
@@ -20,19 +21,23 @@ fun ComponentActivity.setupThemedNavigation() {
 
     setContent {
         MaterialTheme {
-            val backgroundColor = MaterialTheme.colors.background
-            val selectedColor = MaterialTheme.colors.primaryVariant
-            val unselectedColor = MaterialTheme.colors.primaryVariant
-            val rootController = RootComposeBuilder().apply {
-                generateGraph(
-                    backgroundColor,
-                    selectedColor,
-                    unselectedColor,
-                )
-            }.build()
-            rootController.setupWithActivity(this)
-            rootController.setupWithViewModels()
-            MainContent(rootController = rootController)
+            CompositionLocalProvider(
+                LocalImageLoader provides generateImageLoader(ContextHolder(application))
+            ) {
+                val backgroundColor = MaterialTheme.colors.background
+                val selectedColor = MaterialTheme.colors.primaryVariant
+                val unselectedColor = MaterialTheme.colors.primaryVariant
+                val rootController = RootComposeBuilder().apply {
+                    generateGraph(
+                        backgroundColor,
+                        selectedColor,
+                        unselectedColor,
+                    )
+                }.build()
+                rootController.setupWithActivity(this)
+                rootController.setupWithViewModels()
+                MainContent(rootController = rootController)
+            }
         }
     }
 }

@@ -31,4 +31,17 @@ class KtorDetailsRemoteDataSource(
             null
         }
     }
+
+    suspend fun getPhoto(
+        id: Int,
+        token: String,
+        eng: Boolean = true,
+    ) {
+        val req = httpClient.get {
+            bearerAuth(token)
+            url {
+                path("/e")
+            }
+        }
+    }
 }

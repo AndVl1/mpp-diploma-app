@@ -9,6 +9,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.serialization.core)
+                implementation(libs.kotlin.datetime)
 
                 implementation(projects.common.auth.api)
                 implementation(projects.common.list.api)

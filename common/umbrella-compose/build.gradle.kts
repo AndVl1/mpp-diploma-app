@@ -56,6 +56,9 @@ kotlin {
 
                 implementation(libs.odyssey.core)
                 implementation(libs.odyssey.compose)
+                implementation(libs.kermit)
+
+                api(libs.compose.imageloader)
             }
         }
 
