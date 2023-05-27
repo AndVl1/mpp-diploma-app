@@ -60,7 +60,7 @@ data class ItemDto(
     @SerialName("id_version")
     val idVersion: Int? = null,
     @SerialName("key")
-    val key: Int? = null,
+    val key: Long? = null,
     @SerialName("name")
     val name: String? = null,
     @SerialName("other_links")

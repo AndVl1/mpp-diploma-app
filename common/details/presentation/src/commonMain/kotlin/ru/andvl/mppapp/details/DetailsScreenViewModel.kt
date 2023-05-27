@@ -53,10 +53,18 @@ class DetailsScreenViewModel(
             try {
                 authRepository.whoAmI()
             } catch (e: Exception) {
-                authRepository.login()
+                try {
+                    authRepository.login()
+                } catch (e: Exception) {
+                    // плохо :(
+                }
             }
         } else {
-            authRepository.login()
+            try {
+                authRepository.login()
+            } catch (e: Exception) {
+                // плохо :(
+            }
         }
     }
 }

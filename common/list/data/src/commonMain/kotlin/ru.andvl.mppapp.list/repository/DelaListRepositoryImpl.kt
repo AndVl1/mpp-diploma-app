@@ -6,9 +6,11 @@ import kotlinx.datetime.toLocalDateTime
 import ru.andvl.mppapp.list.dto.DelaDto
 import ru.andvl.mppapp.list.ktor.KtorDelaApiRequest
 import ru.andvl.mppapp.list.ktor.KtorDelasRemoteDataSource
+import ru.andvl.mppapp.list.local.DelasLocalDataSource
 
 class DelaListRepositoryImpl(
     private val remoteDataSource: KtorDelasRemoteDataSource,
+    private val localDataSource: DelasLocalDataSource,
 ) : DelaListRepository {
     override suspend fun getDelas(take: Int, token: String): DelaDto? {
         val now = Clock.System.now()
@@ -18,6 +20,12 @@ class DelaListRepositoryImpl(
         return remoteDataSource.getDelas(
             KtorDelaApiRequest(),
             token
-        )
+        )?.also {
+            localDataSource.saveDelaList(it)
+        } ?: localDataSource.getLocalDela()
+    }
+
+    private fun saveDelas(dela: DelaDto) {
+        localDataSource
     }
 }
