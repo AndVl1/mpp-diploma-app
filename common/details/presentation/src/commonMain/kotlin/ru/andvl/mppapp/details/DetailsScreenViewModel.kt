@@ -57,6 +57,7 @@ class DetailsScreenViewModel(
                     authRepository.login()
                 } catch (e: Exception) {
                     // плохо :(
+                    // игнор запросов, чтобы взять данные из БД
                 }
             }
         } else {
@@ -64,6 +65,7 @@ class DetailsScreenViewModel(
                 authRepository.login()
             } catch (e: Exception) {
                 // плохо :(
+                // игнор запросов, чтобы взять данные из БД
             }
         }
     }
