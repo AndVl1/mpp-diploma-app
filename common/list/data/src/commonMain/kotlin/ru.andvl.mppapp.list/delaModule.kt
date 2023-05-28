@@ -16,7 +16,7 @@ val delaModule = DI.Module("delaModule") {
     }
 
     bind<KtorDelasRemoteDataSource>() with provider {
-        KtorDelasRemoteDataSource(instance())
+        KtorDelasRemoteDataSource(instance(), instance())
     }
     bind<DelasLocalDataSource>() with provider {
         DelasLocalDataSource(instance())

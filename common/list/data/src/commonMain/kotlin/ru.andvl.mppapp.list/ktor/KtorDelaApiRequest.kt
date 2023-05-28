@@ -9,7 +9,7 @@ data class KtorDelaApiRequest(
     @SerialName("fio_filter")
     val fioFilter: String = "",
     @SerialName("filter")
-    val filter: String = "",
+    val filter: Filter,
     @SerialName("skip")
     val skip: Int = 0,
     @SerialName("take")

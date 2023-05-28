@@ -18,14 +18,10 @@ class DelaListRepositoryImpl(
         println("${datetime.monthNumber}, ${datetime.dayOfMonth}")
         val filter = KtorDelaApiRequest.Filter(datetime.monthNumber.toString(), datetime.dayOfMonth.toString())
         return remoteDataSource.getDelas(
-            KtorDelaApiRequest(),
+            KtorDelaApiRequest(filter = filter),
             token
         )?.also {
             localDataSource.saveDelaList(it)
         } ?: localDataSource.getLocalDela()
-    }
-
-    private fun saveDelas(dela: DelaDto) {
-        localDataSource
     }
 }

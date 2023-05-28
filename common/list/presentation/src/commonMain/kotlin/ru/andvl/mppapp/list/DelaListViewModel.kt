@@ -6,6 +6,9 @@ import di.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import ru.andvl.mppapp.auth.repository.AuthRepository
 import ru.andvl.mppapp.list.models.DelaAction
 import ru.andvl.mppapp.list.models.DelaEvent
@@ -66,9 +69,15 @@ class DelaListViewModel : BaseSharedViewModel<DelaViewState, DelaAction, DelaEve
     }
 
     private suspend fun getDela() {
+        val now = Clock.System.now()
+        val datetime = now.toLocalDateTime(TimeZone.currentSystemDefault())
         val dela = delaRepository.getDelas(token = authRepository.getToken())
         viewState = if (dela != null) {
-            viewState.copy(isLoading = false, dela = dela)
+            viewState.copy(
+                isLoading = false,
+                dela = dela,
+                date = "${datetime.dayOfMonth}.${datetime.monthNumber}"
+            )
         } else {
             viewState.copy(isLoading = false, isError = true)
         }

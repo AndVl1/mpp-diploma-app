@@ -20,7 +20,7 @@ class DelasLocalDataSource(
 
     fun getLocalDela(): DelaDto {
         val delas = database.itemsQueries.select().executeAsList()
-            .map { ItemDto(key = it.key, fio = it.fio) }
+            .map { ItemDto(key = it.key.toInt(), fio = it.fio) }
             .toCollection(ArrayList())
         return DelaDto(items = delas)
     }

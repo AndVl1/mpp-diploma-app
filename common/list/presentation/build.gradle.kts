@@ -12,6 +12,7 @@ kotlin {
                 implementation(projects.common.core)
 
                 implementation(libs.kViewModel.core)
+                implementation(libs.kotlin.datetime)
             }
         }
     }
