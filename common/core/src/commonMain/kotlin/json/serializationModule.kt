@@ -9,8 +9,9 @@ internal val serializationModule = DI.Module("serializationModule") {
     bind<Json>() with singleton {
         Json {
             isLenient = true
-            prettyPrint = true
+            prettyPrint = false
             ignoreUnknownKeys = true
+            encodeDefaults = true
         }
     }
 }
