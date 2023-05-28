@@ -12,11 +12,16 @@ sqlDelight = "2.0.0-alpha05"
 settings = "1.0.0"
 kViewModel = "0.14"
 odyssey = "1.4.0-alpha05"
+compose-imageloader = "1.4.4"
+kermit = "2.0.0-RC4"
+okio = "3.3.0"
+datetime = "0.4.0"
 
 [libraries]
 kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-general" }
 kotlin-serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin-general" }
 kotlin-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version = "1.4.1" }
+kotlin-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "datetime" }
 
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
@@ -57,6 +62,13 @@ kViewModel-odyssey = { group = "com.adeo", name = "kviewmodel-odyssey", version.
 
 odyssey-core = { group = "io.github.alexgladkov", name = "odyssey-core", version.ref = "odyssey" }
 odyssey-compose = { group = "io.github.alexgladkov", name = "odyssey-compose", version.ref = "odyssey" }
+
+compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version.ref = "compose-imageloader" }
+
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+okio-fakefilesystem = { module = "com.squareup.okio:okio-fakefilesystem", version.ref = "okio" }
 
 [plugins]
 android-app = { id = "com.android.application", version.ref = "androidGradle" }

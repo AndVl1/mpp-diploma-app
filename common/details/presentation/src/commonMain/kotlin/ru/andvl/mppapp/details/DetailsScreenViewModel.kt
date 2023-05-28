@@ -53,10 +53,20 @@ class DetailsScreenViewModel(
             try {
                 authRepository.whoAmI()
             } catch (e: Exception) {
-                authRepository.login()
+                try {
+                    authRepository.login()
+                } catch (e: Exception) {
+                    // плохо :(
+                    // игнор запросов, чтобы взять данные из БД
+                }
             }
         } else {
-            authRepository.login()
+            try {
+                authRepository.login()
+            } catch (e: Exception) {
+                // плохо :(
+                // игнор запросов, чтобы взять данные из БД
+            }
         }
     }
 }

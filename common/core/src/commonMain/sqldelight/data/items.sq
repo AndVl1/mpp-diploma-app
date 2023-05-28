@@ -1,0 +1,15 @@
+CREATE TABLE dela(
+    key INTEGER NOT NULL PRIMARY KEY,
+    fio TEXT NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO dela(key, fio)
+VALUES (?, ?);
+
+select:
+SELECT * FROM dela;
+
+update:
+INSERT OR REPLACE INTO dela(key, fio)
+VALUES (?, ?);
